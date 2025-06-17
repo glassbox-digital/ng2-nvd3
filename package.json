@@ -1,6 +1,6 @@
 {
-  "name": "ng2-nvd3",
-  "version": "2.0.0",
+  "name": "@glassboxdigital/ng2-nvd3",
+  "version": "2.0.2",
   "description": "Angular2 component for NVD3.js reusable charting library",
   "keywords": [
     "angular2",
@@ -18,13 +18,13 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "build:ng2-nvd3": "ng build ng2-nvd3",
-    "publish:ng2-nvd3": "cd dist/ng2-nvd3 && npm publish",
+    "publish:ng2-nvd3": "cd dist/ng2-nvd3 && npm publish --registry https://npm-server-int.glassboxrnd.com/",
     "test": "ng test"
   },
   "author": "Glassbox",
   "repository": {
     "type": "git",
-    "url": "https://github.com/glassbox-digital/ng2-nvd3"
+    "url": "git+https://github.com/glassbox-digital/ng2-nvd3.git"
   },
   "private": true,
   "dependencies": {

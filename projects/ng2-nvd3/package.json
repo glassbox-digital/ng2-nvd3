@@ -1,6 +1,6 @@
 {
-  "name": "ng2-nvd3",
-  "version": "0.0.1",
+  "name": "@glassboxdigital/ng2-nvd3",
+  "version": "2.0.2",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0",
