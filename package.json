@@ -24,7 +24,7 @@
   "author": "Glassbox",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glassbox-digital/ng2-nvd3.git"
+    "url": "git@github.com:glassbox-digital/ng2-nvd3.git"
   },
   "private": true,
   "dependencies": {
