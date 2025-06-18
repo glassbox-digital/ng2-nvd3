@@ -1,6 +1,6 @@
 {
   "name": "@glassboxdigital/ng2-nvd3",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Angular2 component for NVD3.js reusable charting library",
   "keywords": [
     "angular2",
@@ -36,9 +36,11 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
-    "reflect-metadata": "^0.1.10",
+    "@types/d3": "^3.5.34",
+    "@types/nvd3": "^1.8.5",
     "d3": "^3.5.15",
     "nvd3": "^1.8.5",
+    "reflect-metadata": "^0.1.10",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

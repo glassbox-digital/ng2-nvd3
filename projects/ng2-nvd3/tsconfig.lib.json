@@ -6,7 +6,7 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": ["d3", "nvd3", "./src/typings.d.ts"]
   },
   "exclude": ["**/*.spec.ts"]
 }

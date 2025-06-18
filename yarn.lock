@@ -2066,6 +2066,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/d3@^3", "@types/d3@^3.5.34":
+  version "3.5.53"
+  resolved "https://registry.yarnpkg.com/@types/d3/-/d3-3.5.53.tgz#2b4ffe34f7f40e14cc9556fd624370e4597d72f7"
+  integrity sha512-8yKQA9cAS6+wGsJpBysmnhlaaxlN42Qizqkw+h2nILSlS+MAG2z4JdO6p+PJrJ+ACvimkmLJL281h157e52psQ==
+
 "@types/estree@^1.0.0", "@types/estree@^1.0.5":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.8.tgz#958b91c991b1867ced318bedea0e215ee050726e"
@@ -2150,6 +2155,13 @@
   integrity sha512-R4I/kzCYAdRLzfiCabn9hxWfbuHS573x+r0dJMkkzThEa7pbrcDWK+9zu3e7aBOouf+rQAciqPFMnxwr0aWgKg==
   dependencies:
     undici-types "~7.8.0"
+
+"@types/nvd3@^1.8.5":
+  version "1.8.45"
+  resolved "https://registry.yarnpkg.com/@types/nvd3/-/nvd3-1.8.45.tgz#1b4ae0797435e0976d8cf41e0526aa6f373824bc"
+  integrity sha512-px89b/1/wRb3l93VSs7zS05ZQh0nJRC6cHHL2VH2LliMkbLw6UvPhMq/5LmnOyr5g19+57ufAqebjuMEGi2v0g==
+  dependencies:
+    "@types/d3" "^3"
 
 "@types/qs@*":
   version "6.14.0"

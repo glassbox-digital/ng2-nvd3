@@ -7,10 +7,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-// Declare global variables for D3 and NVD3
-declare const d3: any;
-declare const nv: any;
-
 @Component({
   selector: 'nvd3',
   template: ``,
@@ -48,6 +44,7 @@ export class NvD3Component implements OnChanges, OnDestroy {
     if (!options) return;
 
     // Initialize chart with specific type
+    // @ts-ignore
     this.chart = nv.models[options.chart.type]();
     this.chartType = this.options.chart.type;
 
@@ -274,17 +271,22 @@ export class NvD3Component implements OnChanges, OnDestroy {
       d3.select('#' + this.chart.tooltip.id()).remove();
     }
 
+    // For old version check
+    const nv171 = nv as any;
+
     // To be compatible with old nvd3 (v1.7.1)
-    if (nv['graphs'] && this.chart) {
-      for (var i = nv['graphs'].length - 1; i >= 0; i--) {
-        if (nv['graphs'][i] && nv['graphs'][i].id === this.chart.id) {
-          nv['graphs'].splice(i, 1);
+    if (nv171['graphs'] && this.chart) {
+      for (var i = nv171['graphs'].length - 1; i >= 0; i--) {
+        if (nv171['graphs'][i] && nv171['graphs'][i].id === this.chart.id) {
+          nv171['graphs'].splice(i, 1);
         }
       }
     }
+
     if (nv.tooltip && nv.tooltip.cleanup) {
       nv.tooltip.cleanup();
     }
+
     if (this.chart && this.chart.resizeHandler)
       this.chart.resizeHandler.clear();
     this.chart = null;
