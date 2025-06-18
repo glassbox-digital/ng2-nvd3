@@ -1,6 +1,14 @@
-# ng2-nvd3
-[![Build Status](https://travis-ci.org/krispo/ng2-nvd3.svg?branch=master)](https://travis-ci.org/krispo/ng2-nvd3)
-[![NPM Version](http://img.shields.io/npm/v/ng2-nvd3.svg?style=flat)](https://www.npmjs.org/package/ng2-nvd3)
+# @glassboxdigital/ng2-nvd3
+
+## Glassbox Fork
+
+This is a Glassbox fork of the original [ng2-nvd3](http://krispo.github.io/ng2-nvd3) library. This fork has been enhanced with:
+
+- **ng-packagr packaging**: Modern Angular library packaging for better build integration
+- **Ivy compatibility**: Full support for Angular's Ivy rendering engine
+- **Internal publishing**: Published to Glassbox's internal Verdaccio registry at https://npm-server-int.glassboxrnd.com/
+
+---
 
 Angular component for nvd3 (uses d3 v3!). It has similar technique as [angular-nvd3](http://krispo.github.io/angular-nvd3) for angular 1, but designed for angular 2+ and without extra features (like extended mode) you won't need.
 
@@ -13,38 +21,42 @@ Online demos:
 
 ## Install
 
-    npm install ng2-nvd3
-    
+Set your git registry to https://npm-server-int.glassboxrnd.com/ (Available on Glassbox VPN) and run:
+
+    npm install @glassboxdigital/ng2-nvd3
+
 it requires `angular2+`, `d3` (v3.5.17) and `nvd3` as dependencies.
-    
+
 ## Basic usage
 
 ### Simple bar chart
+
 Note: `d3` and `nvd3` should be also included in your project bundle.
 
-Simple discrete bar chart: 
-    
-##### Module   
- 
+Simple discrete bar chart:
+
+##### Module
+
 ```ts
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent }  from './app.component';
-import { NvD3Module } from 'ng2-nvd3';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { NvD3Module } from "ng2-nvd3";
 
 // d3 and nvd3 should be included somewhere
-import 'd3';
-import 'nvd3';
+import "d3";
+import "nvd3";
 
 @NgModule({
-    imports:      [ BrowserModule, NvD3Module ],
-    declarations: [ AppComponent ],
-    bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, NvD3Module],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-``` 
+export class AppModule {}
+```
 
 ##### Component
+
 ```js
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 declare let d3: any;
@@ -135,41 +147,8 @@ export class AppComponent implements OnInit {
   }
 
 }
-```    
-
-## Tests
-
-    npm test
-    
-## Thanks
-
-Special thanks to [Tobias Walle](https://github.com/TobiasWalle) and [MaibornWolff](https://github.com/MaibornWolff) team for the huge updates [#51](https://github.com/krispo/ng2-nvd3/pull/51) !
-    
-## Change Log
-
-#### 2.0.0 (master)
-
-Fixed `aot` issue [#104](https://github.com/krispo/ng2-nvd3/pull/104) 
-
-#### 2.0.0-rc3
-
-* Angular 4
-
-#### 1.1.3
-* Angular2 - v2.0.0-rc4 
-
-#### 1.1.2
-* Angular2 - v2.0.0-rc3 
-
-#### 1.1.1
-* Angular2 - v2.0.0-rc2 
-
-#### 1.1.0
-* Angular2 - v2.0.0-rc1 
-
-#### 1.0.7
-* Angular2 - v2.0.0-beta.3 
-    
+```
 
 ## License
+
 MIT

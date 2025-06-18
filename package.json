@@ -1,6 +1,6 @@
 {
-  "name": "ng2-nvd3",
-  "version": "2.0.0",
+  "name": "@glassboxdigital/ng2-nvd3",
+  "version": "3.0.0",
   "description": "Angular2 component for NVD3.js reusable charting library",
   "keywords": [
     "angular2",
@@ -10,50 +10,53 @@
     "component",
     "directive"
   ],
-  "homepage": "https://github.com/krispo/ng2-nvd3",
+  "homepage": "https://github.com/glassbox-digital/ng2-nvd3",
   "license": "MIT",
-  "main": "build/index.js",
-  "typings": "build/index.d.ts",
   "scripts": {
-    "pretest": "npm run build",
-    "test": "karma start karma.conf.js",
-    "build": "rm -rf build && ngc -p ./tsconfig.publish.json",
-    "prepublish": "typings install && npm run build"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "build:ng2-nvd3": "ng build ng2-nvd3",
+    "publish:ng2-nvd3": "cd dist/ng2-nvd3 && npm publish --registry https://npm-server-int.glassboxrnd.com/",
+    "test": "ng test"
   },
-  "author": "Konstantin Skipor",
+  "author": "Glassbox",
   "repository": {
     "type": "git",
-    "url": "https://github.com/krispo/ng2-nvd3"
+    "url": "git@github.com:glassbox-digital/ng2-nvd3.git"
   },
+  "private": true,
   "dependencies": {
-    "reflect-metadata": "^0.1.10",
-    "rxjs": "5.2.0",
+    "@angular/animations": "^16.2.0",
+    "@angular/common": "^16.2.0",
+    "@angular/compiler": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/forms": "^16.2.0",
+    "@angular/platform-browser": "^16.2.0",
+    "@angular/platform-browser-dynamic": "^16.2.0",
+    "@angular/router": "^16.2.0",
+    "@types/d3": "^3.5.34",
+    "@types/nvd3": "^1.8.5",
     "d3": "^3.5.15",
-    "nvd3": "^1.8.5"
+    "nvd3": "^1.8.5",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "@angular/common": "^2.4 || ^4.0",
-    "@angular/compiler": "^2.4 || ^4.0",
-    "@angular/compiler-cli": "^2.4 || ^4.0",
-    "@angular/core": "^2.4 || ^4.0",
-    "@angular/platform-browser": "^2.4 || ^4.0",
-    "@angular/platform-browser-dynamic": "^2.4 || ^4.0",
-    "@types/jasmine": "^2.5.51",
-    "es6-promise": "^4.0.5",
-    "es6-shim": "^0.35.3",
-    "jasmine": "^2.5.3",
-    "jasmine-core": "2.5.2",
-    "karma": "1.5.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-coverage": "^1.1.1",
-    "karma-jasmine": "^1.1.0",
-    "karma-remap-istanbul": "^0.6.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^2.0.2",
-    "ts-loader": "^2.0",
-    "typescript": "2.3.4",
-    "typings": "^2.1.0",
-    "webpack": "^1.14.0",
-    "zone.js": "^0.7.7"
+    "@angular-devkit/build-angular": "^16.2.16",
+    "@angular/cli": "^16.2.16",
+    "@angular/compiler-cli": "^16.2.0",
+    "@types/jasmine": "~4.3.0",
+    "jasmine-core": "~4.6.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^16.2.0",
+    "typescript": "~5.1.3"
   }
 }

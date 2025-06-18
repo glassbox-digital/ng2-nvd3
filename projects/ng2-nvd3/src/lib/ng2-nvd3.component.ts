@@ -1,22 +1,25 @@
-/// <reference path="../typings/globals/d3/index.d.ts" />
-/// <reference path="../typings/globals/nvd3/index.d.ts" />
-import { Component, OnChanges, OnDestroy, ElementRef, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnDestroy,
+  ElementRef,
+  Input,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'nvd3',
-  template: ``
+  template: ``,
 })
 export class NvD3Component implements OnChanges, OnDestroy {
   @Input() options: any;
   @Input() data: any;
   el: HTMLElement;
   chart: any;
-  chartType: string;
+  chartType: string = '';
   svg: any;
 
-  constructor(
-    elementRef: ElementRef
-  ) {
+  constructor(elementRef: ElementRef) {
     this.el = elementRef.nativeElement;
   }
 
@@ -34,13 +37,14 @@ export class NvD3Component implements OnChanges, OnDestroy {
     this.clearElement();
   }
 
-  initChart(options) {
+  initChart(options: any) {
     // Clearing
     this.clearElement();
 
     if (!options) return;
 
     // Initialize chart with specific type
+    // @ts-ignore
     this.chart = nv.models[options.chart.type]();
     this.chartType = this.options.chart.type;
 
@@ -68,7 +72,7 @@ export class NvD3Component implements OnChanges, OnDestroy {
    * Update chart with new options.
    * @param options
    */
-  updateWithOptions(options) {
+  updateWithOptions(options: any) {
     // Exit if options are not yet bound
     if (!options) return;
 
@@ -77,73 +81,80 @@ export class NvD3Component implements OnChanges, OnDestroy {
 
       let value = this.chart[key];
 
-      if (key[0] === '_') { }
-      else if ([
-        'clearHighlights',
-        'highlightPoint',
-        'id',
-        'options',
-        'resizeHandler',
-        'state',
-        'open',
-        'close',
-        'tooltipContent'
-      ].indexOf(key) >= 0) { }
-
-      else if (key === 'dispatch') this.configureEvents(this.chart[key], options.chart[key]);
-
-      else if ([
-        'bars',
-        'bars1',
-        'bars2',
-        'boxplot',
-        'bullet',
-        'controls',
-        'discretebar',
-        'distX',
-        'distY',
-        'interactiveLayer',
-        'legend',
-        'lines',
-        'lines1',
-        'lines2',
-        'multibar',
-        'pie',
-        'scatter',
-        'scatters1',
-        'scatters2',
-        'sparkline',
-        'stack1',
-        'stack2',
-        'sunburst',
-        'tooltip',
-        'x2Axis',
-        'xAxis',
-        'y1Axis',
-        'y2Axis',
-        'y3Axis',
-        'y4Axis',
-        'yAxis',
-        'yAxis1',
-        'yAxis2',
-        'sankeyChart'
-      ].indexOf(key) >= 0 ||
+      if (key[0] === '_') {
+      } else if (
+        [
+          'clearHighlights',
+          'highlightPoint',
+          'id',
+          'options',
+          'resizeHandler',
+          'state',
+          'open',
+          'close',
+          'tooltipContent',
+        ].indexOf(key) >= 0
+      ) {
+      } else if (key === 'dispatch')
+        this.configureEvents(this.chart[key], options.chart[key]);
+      else if (
+        [
+          'bars',
+          'bars1',
+          'bars2',
+          'boxplot',
+          'bullet',
+          'controls',
+          'discretebar',
+          'distX',
+          'distY',
+          'interactiveLayer',
+          'legend',
+          'lines',
+          'lines1',
+          'lines2',
+          'multibar',
+          'pie',
+          'scatter',
+          'scatters1',
+          'scatters2',
+          'sparkline',
+          'stack1',
+          'stack2',
+          'sunburst',
+          'tooltip',
+          'x2Axis',
+          'xAxis',
+          'y1Axis',
+          'y2Axis',
+          'y3Axis',
+          'y4Axis',
+          'yAxis',
+          'yAxis1',
+          'yAxis2',
+          'sankeyChart',
+        ].indexOf(key) >= 0 ||
         // stacked is a component for stackedAreaChart, but a boolean for multiBarChart and multiBarHorizontalChart
-        (key === 'stacked' && options.chart.type === 'stackedAreaChart')) {
+        (key === 'stacked' && options.chart.type === 'stackedAreaChart')
+      ) {
         this.configure(this.chart[key], options.chart[key], options.chart.type);
       }
 
       //TODO: need to fix bug in nvd3
-      else if ((key === 'xTickFormat' || key === 'yTickFormat') && options.chart.type === 'lineWithFocusChart') {
-      }
-      else if ((key === 'tooltips') && options.chart.type === 'boxPlotChart') {
-      }
-      else if ((key === 'tooltipXContent' || key === 'tooltipYContent') && options.chart.type === 'scatterChart') {
-      }
-
-      else if (options.chart[key] === undefined || options.chart[key] === null) {
-      }
-      else this.chart[key](options.chart[key]);
+      else if (
+        (key === 'xTickFormat' || key === 'yTickFormat') &&
+        options.chart.type === 'lineWithFocusChart'
+      ) {
+      } else if (key === 'tooltips' && options.chart.type === 'boxPlotChart') {
+      } else if (
+        (key === 'tooltipXContent' || key === 'tooltipYContent') &&
+        options.chart.type === 'scatterChart'
+      ) {
+      } else if (
+        options.chart[key] === undefined ||
+        options.chart[key] === null
+      ) {
+      } else this.chart[key](options.chart[key]);
     }
 
     this.updateWithData(this.data);
@@ -153,9 +164,8 @@ export class NvD3Component implements OnChanges, OnDestroy {
    * Update chart with new data.
    * @param data
    */
-  updateWithData(data) {
+  updateWithData(data: any) {
     if (data) {
-
       // Select the add <svg> element (create it if necessary) and to render the chart in
       {
         let svgElement = this.el.querySelector('svg');
@@ -177,11 +187,11 @@ export class NvD3Component implements OnChanges, OnDestroy {
   updateSize() {
     if (this.svg) {
       let h, w;
-      if (h = this.options.chart.height) {
+      if ((h = this.options.chart.height)) {
         if (!isNaN(+h)) h += 'px';
         this.svg.attr('height', h).style({ height: h });
       }
-      if (w = this.options.chart.width) {
+      if ((w = this.options.chart.width)) {
         if (!isNaN(+w)) w += 'px';
         this.svg.attr('width', w).style({ width: w });
       } else {
@@ -196,40 +206,39 @@ export class NvD3Component implements OnChanges, OnDestroy {
    * @param options
    * @param chartType
    */
-  configure(chart, options, chartType) {
+  configure(chart: any, options: any, chartType: any) {
     if (chart && options) {
-
       for (let key in chart) {
         if (!chart.hasOwnProperty(key)) continue;
 
         let value = chart[key];
 
         if (key[0] === '_') {
-        }
-        else if (key === 'dispatch') this.configureEvents(value, options[key]);
-        else if (key === 'tooltip') this.configure(chart[key], options[key], chartType);
+        } else if (key === 'dispatch')
+          this.configureEvents(value, options[key]);
+        else if (key === 'tooltip')
+          this.configure(chart[key], options[key], chartType);
         else if (key === 'contentGenerator') {
           if (options[key]) chart[key](options[key]);
-        }
-        else if ([
-          'axis',
-          'clearHighlights',
-          'defined',
-          'highlightPoint',
-          'nvPointerEventsClass',
-          'options',
-          'rangeBand',
-          'rangeBands',
-          'scatter',
-          'open',
-          'close'
-        ].indexOf(key) === -1) {
+        } else if (
+          [
+            'axis',
+            'clearHighlights',
+            'defined',
+            'highlightPoint',
+            'nvPointerEventsClass',
+            'options',
+            'rangeBand',
+            'rangeBands',
+            'scatter',
+            'open',
+            'close',
+          ].indexOf(key) === -1
+        ) {
           if (options[key] === undefined || options[key] === null) {
-          }
-          else chart[key](options[key]);
+          } else chart[key](options[key]);
         }
       }
-
     }
   }
 
@@ -238,7 +247,7 @@ export class NvD3Component implements OnChanges, OnDestroy {
    * @param dispatch
    * @param options
    */
-  configureEvents(dispatch, options) {
+  configureEvents(dispatch: any, options: any) {
     if (dispatch && options) {
       for (let key in dispatch) {
         if (!dispatch.hasOwnProperty(key)) continue;
@@ -246,8 +255,7 @@ export class NvD3Component implements OnChanges, OnDestroy {
         let value = dispatch[key];
 
         if (options[key] === undefined || options[key] === null) {
-        }
-        else dispatch.on(key + '._', options[key]);
+        } else dispatch.on(key + '._', options[key]);
       }
     }
   }
@@ -263,19 +271,24 @@ export class NvD3Component implements OnChanges, OnDestroy {
       d3.select('#' + this.chart.tooltip.id()).remove();
     }
 
+    // For old version check
+    const nv171 = nv as any;
+
     // To be compatible with old nvd3 (v1.7.1)
-    if (nv['graphs'] && this.chart) {
-      for (var i = nv['graphs'].length - 1; i >= 0; i--) {
-        if (nv['graphs'][i] && (nv['graphs'][i].id === this.chart.id)) {
-          nv['graphs'].splice(i, 1);
+    if (nv171['graphs'] && this.chart) {
+      for (var i = nv171['graphs'].length - 1; i >= 0; i--) {
+        if (nv171['graphs'][i] && nv171['graphs'][i].id === this.chart.id) {
+          nv171['graphs'].splice(i, 1);
         }
       }
     }
+
     if (nv.tooltip && nv.tooltip.cleanup) {
       nv.tooltip.cleanup();
     }
-    if (this.chart && this.chart.resizeHandler) this.chart.resizeHandler.clear();
+
+    if (this.chart && this.chart.resizeHandler)
+      this.chart.resizeHandler.clear();
     this.chart = null;
   }
 }
-
